@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
-import ScrollTop from '../components/scrollTop/ScrollTop'
+import ScrollTop from '../components/scrollTop/ScrollTop';
 import ReduxProvider from "@/provider/ReduxProvider";
 
 export const metadata = {

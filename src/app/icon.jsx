@@ -1,11 +1,11 @@
-import { ImageResponse } from 'next/og'
+import { ImageResponse } from "next/og";
 
 // Image metadata
 export const size = {
   width: 32,
   height: 32,
-}
-export const contentType = 'image/png'
+};
+export const contentType = "image/png";
 
 // Image generation
 export default function Icon() {
@@ -15,13 +15,13 @@ export default function Icon() {
       <div
         style={{
           fontSize: 24,
-          background: 'black',
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'white',
+          background: "black",
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "white",
         }}
       >
         A
@@ -33,5 +33,5 @@ export default function Icon() {
       // config to also set the ImageResponse's width and height.
       ...size,
     }
-  )
+  );
 }

@@ -16,10 +16,7 @@ const Navbar = () => {
   const [checkToken, setCheckToken] = useState(false);
   const [slidebar, setSlidebar] = useState(false);
   const [localtoken, setLocaltoken] = useState(null);
-  // const [localcart, setLocalcart] = useState(null);
   const token = useSelector((state) => state.user.token);
-  // const localtoken = localStorage.getItem("token");
-  // const localcart = JSON.parse(localStorage.getItem("cart"));
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartlist.cart); // **เรียกใช้ทำให้ rerender component **
   const navRef = useRef();
@@ -40,12 +37,8 @@ const Navbar = () => {
 
   useEffect(() => {
     const localtokens = localStorage.getItem("token");
-    // const localcarts = localStorage.getItem("cart");
     setLocaltoken(localtokens ? localtokens : null);
-    // setLocalcart(localcarts ? localcarts : []);
   }, []);
-
-  // console.log(cart.length);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {

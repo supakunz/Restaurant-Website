@@ -11,8 +11,6 @@ const CartPage = () => {
   const dispatch = useDispatch();
   const itemCart = useSelector((state) => state.cartlist.cart);
   const [total, setTotal] = useState(0);
-  // const [cart, setCart] = useState(null);
-  // const cart = JSON.parse(localStorage.getItem("cart"));
 
   const getTotalPrice = () => {
     let count = 0;
@@ -21,11 +19,6 @@ const CartPage = () => {
     });
     return setTotal(count);
   };
-
-  // useEffect(() => {
-  //   const localcart = localStorage.getItem("cart");
-  //   setCart(localcart ? localcart : null);
-  // }, []);
 
   useEffect(() => {
     getTotalPrice();

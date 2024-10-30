@@ -15,8 +15,6 @@ const AccountPage = () => {
   const [userData, setUserData] = useState([]);
   const [localtoken, setLocaltoken] = useState(null);
   const route = useRouter();
-  // const token = useSelector((state) => state.user.token);
-  // const localtoken = localStorage.getItem("token");
 
   const handleLogout = () => {
     dispatch(logOut());
@@ -31,13 +29,6 @@ const AccountPage = () => {
     }
     dispatch(getUser(localtokens)).then((res) => setUserData(res.payload.data));
   }, []);
-
-  // useEffect(() => {
-  //   if (!localtoken) {
-  //     return route.replace("/");
-  //   }
-  //   dispatch(getUser(localtoken)).then((res) => setUserData(res.payload.data));
-  // }, []);
 
   return (
     <>

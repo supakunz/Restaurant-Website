@@ -9,8 +9,6 @@ import Image from "next/image";
 const CartMenu = (props) => {
   const dispatch = useDispatch();
   const [token, setToken] = useState(null);
-  // const token = localStorage.getItem("token");
-  // const cart = JSON.parse(localStorage.getItem("cart"));
 
   useEffect(() => {
     const localtoken = localStorage.getItem("token");

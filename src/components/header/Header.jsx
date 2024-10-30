@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+
 import bg_image from "../assets/image/aboutImg1_3.webp";
 import Image from "next/image";
 

@@ -10,17 +10,12 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Hero from "../components/hero/Hero";
-// import Service from "../components/service/ServicePage";
+import Service from "../components/service/ServicePage";
 import AboutPage from "../components/about/AboutPage";
 import Popular from "../components/popular/Popular";
 import Membership from "../components/member/Membership";
 import Team from "../components/teamMember/Team";
 import CommentPage from "../components/comments/CommentPage";
-import dynamic from "next/dynamic";
-
-const Service = dynamic(() => import("../components/service/ServicePage"), {
-  ssr: false,
-});
 
 const Home = () => {
   return (

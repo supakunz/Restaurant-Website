@@ -1,7 +1,3 @@
-"use client";
-
-import "boxicons";
-
 const CartService = (props) => {
   return (
     <>

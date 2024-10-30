@@ -1,5 +1,3 @@
-"use client";
-
 import Header from "../../components/header/Header";
 import ServicePage from "../../components/service/ServicePage";
 

@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+
 import "boxicons";
 
 const CartService = (props) => {

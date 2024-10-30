@@ -1,4 +1,3 @@
-import React from "react";
 import member_image from "../assets/image/memberSection.jpg";
 import Link from "next/link";
 import Image from "next/image";

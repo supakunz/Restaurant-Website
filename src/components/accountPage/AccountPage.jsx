@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import logo_image from "../assets/image/logov3.png";
 import member_image from "../assets/image/memberSection.jpg";
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getUser, logOut } from "../../store/UserSlice";
 import Image from "next/image";
 import { useRouter } from "next/navigation";

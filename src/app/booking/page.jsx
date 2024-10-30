@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "../../components/header/Header";
 import BookTable from "../../components/booktable/BookTable";
 

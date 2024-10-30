@@ -42,7 +42,7 @@ const Hero = (props) => {
           <div className="right-content flex-1 flex justify-center items-center">
             <div className="image-hero flex items-center justify-center">
               <Image
-                className="w-[270px] sm:w-[300px] md:w-full object-cover animate-spin-slow"
+                className="w-[270px] sm:w-[300px] md:w-[450px] object-cover animate-spin-slow"
                 src={props.banner.banner_image}
                 alt="product_banner"
               />

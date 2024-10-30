@@ -1,7 +1,7 @@
 "use client";
 
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import logo_nav from "../assets/image/logov3.png";
 import Link from "next/link";
 import Hamburger from "hamburger-react";

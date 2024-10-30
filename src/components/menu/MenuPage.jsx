@@ -1,33 +1,14 @@
 /* eslint-disable react/jsx-key */
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
 import Allmenu from "../assets/all_menu";
 import CartMenu from "../cartMenu/CartMenu";
-import axios from "axios";
-import { fetchFood } from "../../store/foodSlice";
 
 const MenuPage = () => {
   const [category, setCategory] = useState("All");
   const [rates, setRates] = useState("All");
   const [search, setSearch] = useState("");
-  // const dispatch = useDispatch()
-  // const foods = useSelector((state) => state.foods.food)
-  // const URL = import.meta.env.VITE_API_URL
-
-  // ** Fetch data from server **
-  // useEffect(() => {
-  //   const fetchFoods = async () => {
-  //     const res = await axios.get(`${URL}`)
-
-  //     setTimeout(() => {
-  //       dispatch(fetchFood(res.data))
-  //     }, 500)
-  //   }
-
-  //   fetchFoods();
-  // }, [])
 
   return (
     <>

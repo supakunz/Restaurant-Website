@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import show_image from "../assets/image/aboutImg1_1.webp";
 import { useRouter } from "next/navigation";
 import Link from "next/link";

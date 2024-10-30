@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-key */
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CartComment from "../cartComment/CartComment";
 import CommentData from "../assets/comment";
 import { Swiper, SwiperSlide } from "swiper/react";

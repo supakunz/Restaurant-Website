@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-key */
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CartSlidebar from "./CartSlidebar";
 import { useSelector } from "react-redux";
 import Link from "next/link";

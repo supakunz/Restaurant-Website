@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-key */
 "use client";
 
-import React from "react";
 import CartMember from "./CartMember";
 import member_packgate from "../assets/memberpack";
 

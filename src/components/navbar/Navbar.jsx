@@ -15,11 +15,13 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [checkToken, setCheckToken] = useState(false);
   const [slidebar, setSlidebar] = useState(false);
+  const [localtoken, setLocaltoken] = useState(null);
+  // const [localcart, setLocalcart] = useState(null);
   const token = useSelector((state) => state.user.token);
-  const localtoken = localStorage.getItem("token");
+  // const localtoken = localStorage.getItem("token");
+  // const localcart = JSON.parse(localStorage.getItem("cart"));
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartlist.cart); // **เรียกใช้ทำให้ rerender component **
-  const localcart = JSON.parse(localStorage.getItem("cart"));
   const navRef = useRef();
   const navMenuRef = useRef();
   const miniMenuRef = useRef();
@@ -35,6 +37,15 @@ const Navbar = () => {
     }
     setToggle(!toggle);
   };
+
+  useEffect(() => {
+    const localtokens = localStorage.getItem("token");
+    // const localcarts = localStorage.getItem("cart");
+    setLocaltoken(localtokens ? localtokens : null);
+    // setLocalcart(localcarts ? localcarts : []);
+  }, []);
+
+  // console.log(cart.length);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -282,7 +293,7 @@ const Navbar = () => {
                   className="cursor-pointer p-[7px] lg:p-[9px] bg-yellow border-soLinkd border-[1px] flex items-center justify-center border-yellow rounded-md hover:bg-yellowHover transition duration-300 relative"
                 >
                   <span className="absolute -top-2 -right-2 bg-red-500 rounded-full w-[20px] h-[20px] text-center text-[13px]">
-                    {localcart ? localcart.length : 0}
+                    {cart.length}
                   </span>{" "}
                   <i class="bx bxs-cart-alt cartIcon text-[20px]"></i>
                 </a>

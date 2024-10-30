@@ -11,7 +11,9 @@ const OrderPage = () => {
   const itemCart = useSelector((state) => state.cartlist.cart);
   const [total, setTotal] = useState(0);
   const [userData, setUserData] = useState([]);
+  // const [cart, setCart] = useState(null);
   const cart = JSON.parse(localStorage.getItem("cart"));
+  // const cart = useSelector((state) => state.cartlist.cart); // **เรียกใช้ทำให้ rerender component **
   const localtoken = localStorage.getItem("token");
 
   const getTotalPrice = () => {
@@ -27,7 +29,8 @@ const OrderPage = () => {
   }, [itemCart]);
 
   useEffect(() => {
-    dispatch(getUser(localtoken)).then((res) => setUserData(res.payload.data));
+    const localtokens = localStorage.getItem("token");
+    dispatch(getUser(localtokens)).then((res) => setUserData(res.payload.data));
   }, []);
 
   return (
@@ -147,15 +150,16 @@ const OrderPage = () => {
                               {" "}
                               x{" "}
                               {
-                                cart.filter((data) => data.name == item.name)
-                                  .length
+                                itemCart.filter(
+                                  (data) => data.name == item.name
+                                ).length
                               }
                             </span>
                           </p>
                           <p>
                             {(
                               Number(item.price) *
-                              cart.filter((data) => data.name == item.name)
+                              itemCart.filter((data) => data.name == item.name)
                                 .length
                             ).toFixed(2)}{" "}
                             $

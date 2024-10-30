@@ -11,7 +11,8 @@ const CartPage = () => {
   const dispatch = useDispatch();
   const itemCart = useSelector((state) => state.cartlist.cart);
   const [total, setTotal] = useState(0);
-  const cart = JSON.parse(localStorage.getItem("cart"));
+  // const [cart, setCart] = useState(null);
+  // const cart = JSON.parse(localStorage.getItem("cart"));
 
   const getTotalPrice = () => {
     let count = 0;
@@ -20,6 +21,11 @@ const CartPage = () => {
     });
     return setTotal(count);
   };
+
+  // useEffect(() => {
+  //   const localcart = localStorage.getItem("cart");
+  //   setCart(localcart ? localcart : null);
+  // }, []);
 
   useEffect(() => {
     getTotalPrice();
@@ -97,8 +103,9 @@ const CartPage = () => {
                             </p>
                             <p>
                               {
-                                cart.filter((data) => data.name == item.name)
-                                  .length
+                                itemCart.filter(
+                                  (data) => data.name == item.name
+                                ).length
                               }
                             </p>
                             <p
@@ -113,7 +120,8 @@ const CartPage = () => {
                       <td className="border border-[#cdcdcd] text-[14px] lg:text-[16px]">
                         {(
                           Number(item.price) *
-                          cart.filter((data) => data.name == item.name).length
+                          itemCart.filter((data) => data.name == item.name)
+                            .length
                         ).toFixed(2)}
                         $
                       </td>

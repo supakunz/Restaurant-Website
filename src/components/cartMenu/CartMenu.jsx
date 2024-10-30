@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addCart } from "../../store/cartSlice";
 import { toast } from "react-toastify";
@@ -8,8 +8,14 @@ import Image from "next/image";
 
 const CartMenu = (props) => {
   const dispatch = useDispatch();
-  const token = localStorage.getItem("token");
-  const cart = JSON.parse(localStorage.getItem("cart"));
+  const [token, setToken] = useState(null);
+  // const token = localStorage.getItem("token");
+  // const cart = JSON.parse(localStorage.getItem("cart"));
+
+  useEffect(() => {
+    const localtoken = localStorage.getItem("token");
+    setToken(localtoken ? localtoken : null);
+  }, []);
 
   const handleAddcart = () => {
     if (!token) {

@@ -1,14 +1,30 @@
 "use client";
 
 import Image from "next/image";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeCart } from "../../store/cartSlice";
+import { useEffect, useState } from "react";
 
 const CartSlidebar = ({ name, category, price, image }) => {
   const dispatch = useDispatch();
-  const cart = JSON.parse(localStorage.getItem("cart"));
+  // const [cart, setCart] = useState(null);
+  // const [total, setTotal] = useState(0);
+  const cart = useSelector((state) => state.cartlist.cart);
+  // const cart = JSON.parse(localStorage.getItem("cart"));
   const total = cart.filter((item) => item.name == name).length;
   const priceNumber = Number(price);
+
+  // useEffect(() => {
+  //   const localcarts = localStorage.getItem("cart");
+  //   setCart(localcarts ? JSON.parse(localcarts) : 0);
+  // }, []);
+
+  // useEffect(() => {
+  //   if (cart) {
+  //     const total = cart.filter((item) => item.name == name).length;
+  //     setTotal(cart ? total : 0);
+  //   }
+  // }, [cart]);
 
   return (
     <>

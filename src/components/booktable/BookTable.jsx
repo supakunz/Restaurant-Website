@@ -2,7 +2,6 @@
 
 import React, { useRef } from "react";
 import video_image from "../assets/image/aboutImg1_3.webp";
-// import video_cooking from "../assets/video/cooking.mp4";
 import Image from "next/image";
 
 const BookTable = () => {
@@ -93,24 +92,19 @@ const BookTable = () => {
           >
             <i className="bx bx-x bg-yellow p-1 lg:p-2"></i>
           </div>
-          {/* <video width="610" height="700" controls preload="none">
-            <source src="../assets/video/cooking.mp4" type="video/mp4" />
-            <track
-              src="/path/to/captions.vtt"
-              kind="subtitles"
-              srcLang="en"
-              label="English"
-            />
-            Your browser does not support the video tag.
-          </video> */}
-          {/* <video
+          <video
             className="w-[540px] lg:w-[610px]"
-            src={video_cooking}
-            id="video"
+            width="610"
+            height="610"
+            controls
+            preload="none"
             autoPlay
             loop
             muted
-          ></video> */}
+          >
+            <source src="/cooking.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
     </section>

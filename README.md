@@ -35,8 +35,8 @@ https://github.com/user-attachments/assets/8d2918f9-3d42-4983-b568-f7b1996b8c92
 
   <i>Database :</i>
   <ul>
-      <li>Supabase</li>
       <li>Redis</li>
+      <li>Supabase</li>
   </ul>
 
 

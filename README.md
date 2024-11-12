@@ -4,7 +4,7 @@ Restaurant Website is learn the basics of website functionality and internal dat
 https://github.com/user-attachments/assets/8d2918f9-3d42-4983-b568-f7b1996b8c92
 
 ## 🌈 Live Demo 
-<a href='https://restaurantz.netlify.app/' target="_blank">Restaurant</a>
+<a href='https://restauranntz.vercel.app/' target="_blank">Restaurant</a>
 
 ## 🌏 Features
   <ul>
@@ -31,6 +31,11 @@ https://github.com/user-attachments/assets/8d2918f9-3d42-4983-b568-f7b1996b8c92
   <ul>
       <li>NodeJS</li>
       <li>ExpressJS</li>  
+  </ul>
+
+  <i>Database :</i>
+  <ul>
+      <li>Redis</li>
       <li>Supabase</li>
   </ul>
 

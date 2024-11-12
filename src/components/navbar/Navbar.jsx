@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SlideBar from "../slidebar/SlideBar";
 import { loadItem } from "../../store/cartSlice";
 import Image from "next/image";
+import axios from "axios";
 
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
@@ -23,6 +24,14 @@ const Navbar = () => {
   const navMenuRef = useRef();
   const miniMenuRef = useRef();
   const arrowRef = useRef();
+  const URL = process.env.NEXT_PUBLIC_API_URL;
+
+  const getData = async () => {
+    await axios
+      .get(`${URL}/api/getuser`)
+      .then((res) => console.log(res.data.message))
+      .catch((err) => console.log(err.data.message));
+  };
 
   const handleToggle = () => {
     if (toggle) {
@@ -50,6 +59,10 @@ const Navbar = () => {
         setSlidebar(false);
       }
     });
+  }, []);
+
+  useEffect(() => {
+    getData();
   }, []);
 
   useEffect(() => {

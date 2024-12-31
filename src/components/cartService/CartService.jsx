@@ -1,7 +1,7 @@
 const CartService = (props) => {
   return (
     <>
-      <div className="service-cart flex flex-col text-center p-[30px_20px] bg-white hover:bg-yellow group transition duration-200 hover:-translate-y-3 shadow-md">
+      <div className="service-cart flex flex-col text-center p-[30px_20px] bg-white hover:bg-yellow group transition duration-200 hover:-translate-y-3 shadow-md rounded-md">
         <i
           className={`bx ${props.icon} text-[55px] lg:text-[60px] text-yellow group-hover:text-white`}
         ></i>

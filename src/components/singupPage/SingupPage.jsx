@@ -37,7 +37,7 @@ const SingupPage = () => {
   return (
     <section>
       <div className="container-section py-[100px]">
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 rounded-md overflow-hidden">
           <div className="relative">
             <div class="h-full">
               <Image
@@ -66,7 +66,7 @@ const SingupPage = () => {
             >
               <div className="flex gap-6 mt-4">
                 <input
-                  className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none"
+                  className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none rounded-md"
                   {...register("firstname")}
                   type="text"
                   name="firstname"
@@ -74,7 +74,7 @@ const SingupPage = () => {
                   required
                 />
                 <input
-                  className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none"
+                  className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none rounded-md"
                   {...register("lastname")}
                   type="text"
                   name="lastname"
@@ -84,7 +84,7 @@ const SingupPage = () => {
               </div>
               <div className="flex gap-6">
                 <input
-                  className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none"
+                  className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none rounded-md"
                   {...register("email")}
                   type="email"
                   name="email"
@@ -92,7 +92,7 @@ const SingupPage = () => {
                   required
                 />
                 <input
-                  className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none"
+                  className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none rounded-md"
                   type="text"
                   {...register("phone")}
                   name="phone"
@@ -101,7 +101,7 @@ const SingupPage = () => {
                 />
               </div>
               <input
-                className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none"
+                className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none rounded-md"
                 {...register("password")}
                 type="password"
                 name="password"
@@ -115,7 +115,10 @@ const SingupPage = () => {
                   ipsa fuga.
                 </p>
               </div>
-              <button className="p-3 bg-yellow text-white" type="submit">
+              <button
+                className="p-3 bg-yellow text-white rounded-md"
+                type="submit"
+              >
                 Sing Up
               </button>
               <p className="text-white">

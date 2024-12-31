@@ -127,7 +127,7 @@ const Footer = () => {
             </p>
             <form className="relative" action="">
               <input
-                className="text-[15px] text-black p-4 rounded-lg w-full sm:w-[90%]"
+                className="text-[15px] text-black p-4 rounded-md w-full sm:w-[90%]"
                 type="email"
                 name=""
                 id=""
@@ -136,7 +136,7 @@ const Footer = () => {
               />
               <button
                 type="submit"
-                className="p-[10px_20px] rounded-lg bg-yellow text-[15px] absolute top-[6.2px] right-[2%] sm:right-[13%] lg:right-[14%]"
+                className="p-[10px_20px] rounded-md bg-yellow text-[15px] absolute top-[6.2px] right-[2%] sm:right-[13%] lg:right-[13%]"
               >
                 SINGUP
               </button>

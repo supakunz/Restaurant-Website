@@ -40,7 +40,7 @@ const CartPage = () => {
               Your Cart
             </h1>
           </div>
-          <div className="mt-10  overflow-scroll max-h-[31.4rem]">
+          <div className="mt-10  overflow-scroll max-h-[31.4rem] rounded-md">
             <table className="table-auto w-full text-center min-w-[43rem] ">
               <thead className="bg-blackBlue text-white text-[14px] lg:text-[16px]">
                 <tr>
@@ -87,7 +87,7 @@ const CartPage = () => {
                       </td>
                       <td className="border border-[#cdcdcd]">
                         <div className="flex justify-center items-center">
-                          <div className="flex w-[9rem] justify-between items-center border-solid border-[1px] text-[14px] lg:text-[16px]">
+                          <div className="flex w-[9rem] justify-between items-center border-solid border-[1px] text-[14px] lg:text-[16px] rounded-md overflow-hidden">
                             <p
                               onClick={() => dispatch(removeCart(item.name))}
                               className="p-[5px_13px] bg-yellow cursor-pointer hover:bg-yellowHover"
@@ -132,9 +132,9 @@ const CartPage = () => {
             </table>
           </div>
           <div className="mt-8 flex flex-col md:flex-row justify-between">
-            <div className="flex h-[2.7rem]">
+            <div className="flex h-[2.7rem] rounded-md overflow-hidden">
               <input
-                className="w-full md:w-[12rem] lg:w-[13.5em] border-solid border-y-[1px] border-l-[1px] border-[#cdcdcd]"
+                className="w-full md:w-[12rem] lg:w-[13.5em] border-solid border-y-[1px] border-l-[1px] border-[#cdcdcd] rounded-l-md"
                 type="text"
               />
               <button className="bg-yellow p-[0.5rem] w-[9rem] sm:w-[8rem] md:w-[7.5rem] lg:p-[0.7rem text-[14px] lg:text-[15px] hover:bg-yellowHover ">
@@ -142,7 +142,7 @@ const CartPage = () => {
               </button>
             </div>
             <div>
-              <div className="bg-white p-5 h-[16rem] w-full md:w-[22rem] mt-7 md:mt-0 mb-5 flex flex-col gap-4">
+              <div className="bg-white p-5 h-[16rem] w-full md:w-[22rem] mt-7 md:mt-0 mb-5 flex flex-col gap-4 rounded-md">
                 <h1 className="text-[20.5px] lg:text-[23px] font-semibold mb-[0.6rem]">
                   Cart totol
                 </h1>

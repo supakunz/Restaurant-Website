@@ -1,4 +1,3 @@
-
 let AllMenu = [
   {
     id: "1",
@@ -6,7 +5,7 @@ let AllMenu = [
     category: "Burger",
     image: "/menu/burger1.webp",
     price: "5.00",
-    rate: "4.5"
+    rate: "4.5",
   },
   {
     id: "2",
@@ -14,7 +13,7 @@ let AllMenu = [
     category: "Burger",
     image: "/menu/burger2.webp",
     price: "5.50",
-    rate: "4"
+    rate: "4",
   },
   {
     id: "3",
@@ -22,7 +21,7 @@ let AllMenu = [
     category: "Burger",
     image: "/menu/burger3.webp",
     price: "6.00",
-    rate: "5"
+    rate: "5",
   },
   {
     id: "4",
@@ -30,7 +29,7 @@ let AllMenu = [
     category: "Burger",
     image: "/menu/burger4.webp",
     price: "5.75",
-    rate: "3.5"
+    rate: "3.5",
   },
   {
     id: "5",
@@ -38,7 +37,7 @@ let AllMenu = [
     category: "Burger",
     image: "/menu/burger5.webp",
     price: "6.00",
-    rate: "4.5"
+    rate: "4.5",
   },
   {
     id: "6",
@@ -46,7 +45,7 @@ let AllMenu = [
     category: "Burger",
     image: "/menu/burger6.webp",
     price: "6.50",
-    rate: "5"
+    rate: "5",
   },
   {
     id: "7",
@@ -54,7 +53,7 @@ let AllMenu = [
     category: "Burger",
     image: "/menu/burger7.webp",
     price: "7.00",
-    rate: "4"
+    rate: "4",
   },
   {
     id: "8",
@@ -62,7 +61,7 @@ let AllMenu = [
     category: "Burger",
     image: "/menu/burger8.webp",
     price: "5.75",
-    rate: "3"
+    rate: "3",
   },
   {
     id: "9",
@@ -70,15 +69,15 @@ let AllMenu = [
     category: "Burger",
     image: "/menu/burger9.webp",
     price: "6.50",
-    rate: "5"
+    rate: "5",
   },
   {
     id: "10",
-    name: "Honey Mustard Chicken Burger",
+    name: "Mustard Burger",
     category: "Burger",
     image: "/menu/burger10.webp",
     price: "6.00",
-    rate: "4"
+    rate: "4",
   },
   {
     id: "11",
@@ -86,7 +85,7 @@ let AllMenu = [
     category: "Burger",
     image: "/menu/burger11.webp",
     price: "5.00",
-    rate: "4"
+    rate: "4",
   },
   {
     id: "12",
@@ -94,7 +93,7 @@ let AllMenu = [
     category: "Drink",
     image: "/menu/drink3.webp",
     price: "2.50",
-    rate: "3.5"
+    rate: "3.5",
   },
   {
     id: "13",
@@ -102,7 +101,7 @@ let AllMenu = [
     category: "Drink",
     image: "/menu/drink4.webp",
     price: "3.00",
-    rate: "4.5"
+    rate: "4.5",
   },
   {
     id: "14",
@@ -110,7 +109,7 @@ let AllMenu = [
     category: "Drink",
     image: "/menu/drink6.webp",
     price: "3.50",
-    rate: "3.5"
+    rate: "3.5",
   },
   {
     id: "15",
@@ -118,7 +117,7 @@ let AllMenu = [
     category: "Drink",
     image: "/menu/drink5.webp",
     price: "3.00",
-    rate: "4"
+    rate: "4",
   },
   {
     id: "16",
@@ -126,7 +125,7 @@ let AllMenu = [
     category: "Drink",
     image: "/menu/drink7.webp",
     price: "4.00",
-    rate: "5"
+    rate: "5",
   },
   {
     id: "17",
@@ -134,7 +133,7 @@ let AllMenu = [
     category: "Drink",
     image: "/menu/drink2.webp",
     price: "1.50",
-    rate: "4.5"
+    rate: "4.5",
   },
   {
     id: "18",
@@ -142,7 +141,7 @@ let AllMenu = [
     category: "Drink",
     image: "/menu/drink1.webp",
     price: "1.50",
-    rate: "4.5"
+    rate: "4.5",
   },
   {
     id: "19",
@@ -150,7 +149,7 @@ let AllMenu = [
     category: "Fried",
     image: "/menu/fried1.webp",
     price: "5.00",
-    rate: "4"
+    rate: "4",
   },
   {
     id: "20",
@@ -158,7 +157,7 @@ let AllMenu = [
     category: "Fried",
     image: "/menu/fried2.webp",
     price: "3.50",
-    rate: "3.5"
+    rate: "3.5",
   },
   {
     id: "21",
@@ -166,7 +165,7 @@ let AllMenu = [
     category: "Fried",
     image: "/menu/fried3.webp",
     price: "4.00",
-    rate: "4"
+    rate: "4",
   },
   {
     id: "22",
@@ -174,7 +173,7 @@ let AllMenu = [
     category: "Fried",
     image: "/menu/fried4.webp",
     price: "5.50",
-    rate: "3"
+    rate: "3",
   },
   {
     id: "23",
@@ -182,7 +181,7 @@ let AllMenu = [
     category: "Fried",
     image: "/menu/fried6.webp",
     price: "4.00",
-    rate: "3.5"
+    rate: "3.5",
   },
   {
     id: "24",
@@ -190,7 +189,7 @@ let AllMenu = [
     category: "Fried",
     image: "/menu/fried5.webp",
     price: "5.75",
-    rate: "5"
+    rate: "5",
   },
   {
     id: "25",
@@ -198,7 +197,7 @@ let AllMenu = [
     category: "Pizza",
     image: "/menu/pizza1.webp",
     price: "8.00",
-    rate: "4"
+    rate: "4",
   },
   {
     id: "26",
@@ -206,7 +205,7 @@ let AllMenu = [
     category: "Pizza",
     image: "/menu/pizza2.webp",
     price: "9.00",
-    rate: "4.5"
+    rate: "4.5",
   },
   {
     id: "27",
@@ -214,7 +213,7 @@ let AllMenu = [
     category: "Pizza",
     image: "/menu/pizza3.webp",
     price: "9.50",
-    rate: "4.5"
+    rate: "4.5",
   },
   {
     id: "28",
@@ -222,7 +221,7 @@ let AllMenu = [
     category: "Pizza",
     image: "/menu/pizza4.webp",
     price: "8.50",
-    rate: "4"
+    rate: "4",
   },
   {
     id: "29",
@@ -230,7 +229,7 @@ let AllMenu = [
     category: "Pizza",
     image: "/menu/pizza5.webp",
     price: "8.00",
-    rate: "3.5"
+    rate: "3.5",
   },
   {
     id: "30",
@@ -238,7 +237,7 @@ let AllMenu = [
     category: "Pizza",
     image: "/menu/pizza6.webp",
     price: "10.00",
-    rate: "5"
+    rate: "5",
   },
   {
     id: "31",
@@ -246,7 +245,7 @@ let AllMenu = [
     category: "Pizza",
     image: "/menu/pizza7.webp",
     price: "7.50",
-    rate: "3"
+    rate: "3",
   },
   {
     id: "32",
@@ -254,7 +253,7 @@ let AllMenu = [
     category: "Pizza",
     image: "/menu/pizza8.webp",
     price: "9.50",
-    rate: "4.5"
+    rate: "4.5",
   },
   {
     id: "33",
@@ -262,7 +261,7 @@ let AllMenu = [
     category: "Pizza",
     image: "/menu/pizza9.webp",
     price: "10.50",
-    rate: "4"
+    rate: "4",
   },
   {
     id: "34",
@@ -270,7 +269,7 @@ let AllMenu = [
     category: "Steak",
     image: "/menu/steak1.webp",
     price: "12.00",
-    rate: "4.5"
+    rate: "4.5",
   },
   {
     id: "35",
@@ -278,7 +277,7 @@ let AllMenu = [
     category: "Steak",
     image: "/menu/steak2.webp",
     price: "15.00",
-    rate: "5"
+    rate: "5",
   },
   {
     id: "36",
@@ -286,7 +285,7 @@ let AllMenu = [
     category: "Steak",
     image: "/menu/steak3.webp",
     price: "10.00",
-    rate: "4"
+    rate: "4",
   },
   {
     id: "37",
@@ -294,7 +293,7 @@ let AllMenu = [
     category: "Steak",
     image: "/menu/steak4.webp",
     price: "12.50",
-    rate: "4"
+    rate: "4",
   },
   {
     id: "38",
@@ -302,7 +301,7 @@ let AllMenu = [
     category: "Steak",
     image: "/menu/steak5.webp",
     price: "18.00",
-    rate: "5"
+    rate: "5",
   },
   {
     id: "39",
@@ -310,7 +309,7 @@ let AllMenu = [
     category: "Steak",
     image: "/menu/steak6.webp",
     price: "11.00",
-    rate: "4"
+    rate: "4",
   },
   {
     id: "40",
@@ -318,7 +317,7 @@ let AllMenu = [
     category: "Steak",
     image: "/menu/steak7.webp",
     price: "13.00",
-    rate: "3.5"
+    rate: "3.5",
   },
   {
     id: "41",
@@ -326,7 +325,7 @@ let AllMenu = [
     category: "Steak",
     image: "/menu/steak8.webp",
     price: "16.00",
-    rate: "4.5"
+    rate: "4.5",
   },
   {
     id: "42",
@@ -334,8 +333,8 @@ let AllMenu = [
     category: "Steak",
     image: "/menu/steak9.webp",
     price: "10.50",
-    rate: "3.5"
-  }
-]
+    rate: "3.5",
+  },
+];
 
 export default AllMenu;

@@ -1,0 +1,11 @@
+.parallax {
+  position: relative;
+  background-image: url("/menu/memberSection.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  width: 100%;
+  z-index: -10;
+}

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import show_image from "../assets/image/aboutImg1_1.webp";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -15,8 +15,21 @@ const LoginPage = () => {
   const { token, error } = useSelector((state) => state.user);
   const { register, handleSubmit, reset } = useForm();
   const router = useRouter();
+  const [isCursorVisible, setIsCursorVisible] = useState(true);
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      //* เมื่อมีการกดปุ่ม Enter
+      setIsCursorVisible(false); // ทำให้เคอร์เซอร์หาย
+    }
+  };
+
+  const handleFocus = () => {
+    setIsCursorVisible(true); //เมื่อมีการ focus ที่ Input เคอร์เซอร์กลับมา
+  };
 
   const onSubmit = (data) => {
+    setIsCursorVisible(false);
     dispatch(checkUser(data));
   };
 
@@ -31,7 +44,7 @@ const LoginPage = () => {
   return (
     <section>
       <div className="container-section py-[100px]">
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 rounded-md overflow-hidden">
           <div className="relative">
             <div class="h-full">
               <Image
@@ -59,22 +72,35 @@ const LoginPage = () => {
               onSubmit={handleSubmit(onSubmit)}
             >
               <input
-                className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none"
+                className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none rounded-md"
                 {...register("email")}
                 type="email"
                 name="email"
                 placeholder="Email..."
+                onKeyDown={handleKeyDown}
+                onFocus={handleFocus}
                 required
+                style={{
+                  caretColor: isCursorVisible ? "black" : "transparent", // ทำให้เคอร์เซอร์หาย
+                }}
               />
               <input
-                className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none"
+                className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none rounded-md"
                 type="password"
                 {...register("password")}
                 name="password"
                 placeholder="password..."
+                onKeyDown={handleKeyDown}
+                onFocus={handleFocus}
                 required
+                style={{
+                  caretColor: isCursorVisible ? "black" : "transparent", // ทำให้เคอร์เซอร์หาย
+                }}
               />
-              <button type="submit" className="p-3 bg-yellow text-white">
+              <button
+                type="submit"
+                className="p-3 bg-yellow text-white rounded-md"
+              >
                 Sing Up
               </button>
               <p className="text-white">

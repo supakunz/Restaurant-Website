@@ -73,3 +73,26 @@ body {
     background: none;
   }
 }
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.281);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(254, 161, 22);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.281);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(254, 161, 22);
+}

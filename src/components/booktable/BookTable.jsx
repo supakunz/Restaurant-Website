@@ -17,7 +17,7 @@ const BookTable = () => {
   return (
     <section>
       <div className="container-section py-[100px]">
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 rounded-md overflow-hidden">
           <div className="showVideo relative">
             <div class="h-full">
               <Image className="h-full object-cover" src={video_image} alt="" />
@@ -42,13 +42,13 @@ const BookTable = () => {
             </div>
             <div className="flex gap-6 mt-4">
               <input
-                className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none"
+                className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none rounded-md"
                 type="text"
                 name=""
                 placeholder="Your name..."
               />
               <input
-                className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none"
+                className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none rounded-md"
                 type="email"
                 name=""
                 placeholder="Your email..."
@@ -56,25 +56,27 @@ const BookTable = () => {
             </div>
             <div className="flex gap-6">
               <input
-                className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none text-gray-400"
+                className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none text-gray-400 rounded-md"
                 type="date"
                 name=""
               />
               <input
-                className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none"
+                className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none rounded-md"
                 type="text"
                 name=""
                 placeholder="No of people"
               />
             </div>
             <textarea
-              className="p-2 h-[70px] focus:border-yellow border-[1px] border-solid focus:outline-none"
+              className="p-2 h-[70px] focus:border-yellow border-[1px] border-solid focus:outline-none rounded-md"
               name=""
               id=""
               placeholder="Special Request"
               style={{ resize: "none" }}
             ></textarea>
-            <button className="p-3 bg-yellow text-white">Book Now</button>
+            <button className="p-3 bg-yellow text-white rounded-md">
+              Book Now
+            </button>
           </div>
         </div>
       </div>

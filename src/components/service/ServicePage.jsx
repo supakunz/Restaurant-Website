@@ -12,8 +12,16 @@ const Service = ({ showdata }) => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-[1.2rem] ">
             {service_product
               .slice(0, showdata || service_product.length)
-              .map((item) => {
-                return <CartService name={item.name} icon={item.icon} />;
+              .map((item, index) => {
+                return (
+                  <div
+                    data-aos="fade-up"
+                    data-aos-delay={index * 150} // เพิ่ม delay ทีละ 100ms
+                    key={index}
+                  >
+                    <CartService name={item.name} icon={item.icon} />
+                  </div>
+                );
               })}
           </div>
         </div>

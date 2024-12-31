@@ -141,7 +141,7 @@ const Navbar = () => {
                       </svg>
                     </span>
                   </div>
-                  <div class="invisible opacity-0 absolute z-50 text-[15px] flex w-[9rem] top-[3.9rem] flex-col bg-gray-100 py-1 px-4 transition-all duration-300 text-gray-800 shadow-xl group-hover:visible group-hover:opacity-100">
+                  <div class="invisible opacity-0 absolute z-50 text-[15px] flex w-[9rem] top-[3.9rem] flex-col bg-gray-100 py-1 px-4 transition-all duration-300 text-gray-800 rounded-md shadow-xl group-hover:visible group-hover:opacity-100">
                     <Link
                       href={"/ourteam"}
                       class="my-2 block border-b border-gray-100 py-1 text-gray-500 hover:text-black md:mx-2 "

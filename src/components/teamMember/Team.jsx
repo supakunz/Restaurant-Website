@@ -9,7 +9,10 @@ const Team = ({ showdata }) => {
     <>
       <section className="bg-grayWhite py-[100px]">
         <div className="container-section">
-          <div className="flex flex-col text-center mb-[60px]">
+          <div
+            data-aos="fade-up"
+            className="flex flex-col text-center mb-[60px]"
+          >
             <p
               className="text-[18px] lg:text-[20px] text-yellow text"
               style={{ fontFamily: "Pacifico" }}
@@ -21,14 +24,18 @@ const Team = ({ showdata }) => {
             </h1>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-[1.6rem] h-full">
-            {Teamchefs.slice(0, showdata || Teamchefs.length).map((item) => (
-              <CartChefs
-                firstname={item.firstname}
-                lastname={item.lastname}
-                image={item.image}
-                position={item.position}
-              />
-            ))}
+            {Teamchefs.slice(0, showdata || Teamchefs.length).map(
+              (item, index) => (
+                <div data-aos="fade-up" data-aos-delay={index * 150}>
+                  <CartChefs
+                    firstname={item.firstname}
+                    lastname={item.lastname}
+                    image={item.image}
+                    position={item.position}
+                  />
+                </div>
+              )
+            )}
           </div>
         </div>
       </section>

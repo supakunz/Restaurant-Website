@@ -263,7 +263,7 @@ const OrderPage = () => {
                       repellat ab? Voluptatibus adipisci sapiente libero?
                     </p>
                   </div>
-                  <button className="p-[0.8rem] text-[14px] lg:text-[16px] bg-yellow text-white">
+                  <button className="p-[0.8rem] text-[14px] lg:text-[16px] bg-yellow text-white rounded-md">
                     Place Order
                   </button>
                 </div>

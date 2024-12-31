@@ -35,7 +35,7 @@ const AccountPage = () => {
       <section>
         <div className="container-section py-[100px]">
           <div className="grid grid-cols-1 md:grid-cols-[35%_62%] gap-10 text-[14px] sm:text-[15px] lg:text-[16px]">
-            <div className="bg-blackBlue p-[33px_25px] rounded-lg">
+            <div className="bg-blackBlue p-[33px_25px] rounded-md">
               <div className="flex justify-center">
                 <Image className="max-w-[180px]" src={logo_image} alt="" />
               </div>
@@ -63,12 +63,12 @@ const AccountPage = () => {
               </div>
               <button
                 onClick={handleLogout}
-                className="p-[0.7rem] bg-[#ff8080] rounded-lg w-full hover:bg-[#f89090]"
+                className="p-[0.7rem] bg-[#ff8080] rounded-md w-full hover:bg-[#f89090]"
               >
                 Logout
               </button>
             </div>
-            <div className='rounded-lg flex items-center justify-center p-10 relative overflow-hidden before:content-[""] before:absolute before:bg-[#000000b3] before:z-[-9] before:w-full before:h-screen'>
+            <div className='rounded-md flex items-center justify-center p-10 relative overflow-hidden before:content-[""] before:absolute before:bg-[#000000b3] before:z-[-9] before:w-full before:h-screen'>
               <Image
                 className="absolute z-[-10] top-0 w-full h-full object-cover"
                 src={member_image}
@@ -81,7 +81,7 @@ const AccountPage = () => {
                 <Link
                   href={"/membership"}
                   onClick={() => window.scrollTo(0, 0)}
-                  className="bg-yellow p-[10px] w-[200px] rounded-lg hover:bg-yellowHover"
+                  className="bg-yellow p-[10px] w-[200px] rounded-md hover:bg-yellowHover"
                 >
                   Go to membership
                 </Link>

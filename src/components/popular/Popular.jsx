@@ -33,7 +33,10 @@ const Popular = () => {
     <>
       <section className="bg-grayWhite h-full py-[100px]">
         <div className="container-section">
-          <div className="flex flex-col text-center mb-[90px] lg:mb-[100px]">
+          <div
+            data-aos="fade-up"
+            className="flex flex-col text-center mb-[90px] lg:mb-[100px]"
+          >
             <p
               className="text-[18px] lg:text-[20px] text-yellow text"
               style={{ fontFamily: "Pacifico" }}
@@ -44,48 +47,50 @@ const Popular = () => {
               Most Popular Items
             </h1>
           </div>
-          <Swiper
-            slidesPerView={windowWidth}
-            spaceBetween={40}
-            centeredSlides={true}
-            loop={true}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-            }}
-            pagination={{
-              clickable: true,
-            }}
-            // navigation={true}
-            breakpoints={{
-              768: {
-                slidesPerView: 3,
-              },
-            }}
-            modules={[Autoplay, Pagination]}
-            className="mySwiper h-[450px]"
-          >
-            {PopularMenu.map((item) => {
-              return (
-                <SwiperSlide>
-                  <FoodItem
-                    name={item.name}
-                    image={item.image}
-                    details={item.details}
-                    category={item.category}
-                    price={item.price}
-                  />
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-          <div className="flex justify-center my-5">
-            <Link
-              href={"/menu"}
-              className="p-[13px_26px] lg:p-[15px_30px] text-[15px] lg:text-[16px] bg-yellow text-white  hover:bg-yellowHover"
+          <div data-aos="fade-up" data-aos-delay={150}>
+            <Swiper
+              slidesPerView={windowWidth}
+              spaceBetween={40}
+              centeredSlides={true}
+              loop={true}
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+              }}
+              pagination={{
+                clickable: true,
+              }}
+              // navigation={true}
+              breakpoints={{
+                768: {
+                  slidesPerView: 3,
+                },
+              }}
+              modules={[Autoplay, Pagination]}
+              className="mySwiper h-[450px]"
             >
-              View More
-            </Link>
+              {PopularMenu.map((item) => {
+                return (
+                  <SwiperSlide>
+                    <FoodItem
+                      name={item.name}
+                      image={item.image}
+                      details={item.details}
+                      category={item.category}
+                      price={item.price}
+                    />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+            <div className="flex justify-center my-5">
+              <Link
+                href={"/menu"}
+                className="p-[13px_26px] lg:p-[15px_30px] text-[15px] lg:text-[16px] rounded-md bg-yellow text-white  hover:bg-yellowHover"
+              >
+                View More
+              </Link>
+            </div>
           </div>
         </div>
       </section>

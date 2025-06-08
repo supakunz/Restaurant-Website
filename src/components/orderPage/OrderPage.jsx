@@ -4,13 +4,30 @@
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../../store/UserSlice";
+import { getUser } from "../../store/userThunk";
+import { logOut } from "../../store/UserSlice";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const OrderPage = () => {
   const dispatch = useDispatch();
   const itemCart = useSelector((state) => state.cartlist.cart);
+  const { token } = useSelector((state) => state.user);
   const [total, setTotal] = useState(0);
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState({
+    sessionid: "",
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    address: "",
+    country: "",
+    zip_code: "",
+    city: "",
+    state: "",
+  });
+  const route = useRouter();
+  const [hasMounted, setHasMounted] = useState(false);
 
   const getTotalPrice = () => {
     let count = 0;
@@ -20,14 +37,59 @@ const OrderPage = () => {
     return setTotal(count);
   };
 
+  const handleChange = (e) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
+    console.log(userData);
+  };
+
   useEffect(() => {
     getTotalPrice();
   }, [itemCart]);
 
   useEffect(() => {
-    const localtokens = localStorage.getItem("token");
-    dispatch(getUser(localtokens)).then((res) => setUserData(res.payload.data));
+    setHasMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!hasMounted) return;
+    // เงื่อนไขตรวจสอบว่ากด logout เอง
+    if (!token) {
+      toast.error("Please login again ❌", {
+        position: "bottom-left",
+        autoClose: 2000,
+        theme: "colored",
+        pauseOnHover: false,
+      });
+      return route.replace("/food");
+    }
+
+    dispatch(getUser(token))
+      .unwrap() // ใช้ unwrap กับ thunk เพื่อจัดการ error โดยตรง
+      .then((res) =>
+        setUserData({
+          sessionid: res.data.sessionid,
+          firstname: res.data.firstname,
+          lastname: res.data.lastname,
+          email: res.data.email,
+          phone: res.data.phone,
+          address: res.data.address,
+          country: res.data.country,
+          zip_code: res.data.zip_code,
+          city: res.data.city,
+          state: res.data.state,
+        })
+      )
+      .catch(() => {
+        dispatch(logOut());
+        toast.error("Failed to fetch user data ❌", {
+          position: "bottom-left",
+          autoClose: 2000,
+          theme: "colored",
+          pauseOnHover: false,
+        });
+        route.replace("/food");
+      });
+  }, [token, hasMounted]);
 
   return (
     <>
@@ -60,58 +122,87 @@ const OrderPage = () => {
               </h1>
               <div className="flex flex-col gap-5">
                 <input
-                  className="p-3 text-[#6b6b6b] bg-[#dddddd] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
+                  className="p-3 text-[#6b6b6b] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
                   type="text"
+                  name="firstname"
                   value={userData.firstname}
-                  disabled
+                  onChange={handleChange}
+                  required
                 />
                 <input
-                  className="p-3 text-[#6b6b6b] bg-[#dddddd] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
+                  className="p-3 text-[#6b6b6b] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
                   type="text"
+                  name="lastname"
                   value={userData.lastname}
-                  disabled
+                  onChange={handleChange}
+                  required
                 />
                 <input
-                  className="p-3 text-[#6b6b6b] bg-[#dddddd] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
+                  className="p-3 text-[#6b6b6b] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
                   type="email"
+                  name="email"
                   value={userData.email}
-                  disabled
+                  onChange={handleChange}
+                  required
                 />
                 <input
                   className="p-3 text-[#6b6b6b] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
                   type="text"
                   placeholder="Company Name(optional)"
-                />
-                <input
-                  className="p-3 text-[#6b6b6b] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
-                  type="text"
-                  placeholder="Country / Region"
-                />
-                <input
-                  className="p-3 text-[#6b6b6b] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
-                  type="text"
-                  placeholder="Street Address"
-                />
-                <input
-                  className="p-3 text-[#6b6b6b] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
-                  type="text"
-                  placeholder="Town / City"
-                />
-                <input
-                  className="p-3 text-[#6b6b6b] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
-                  type="text"
-                  placeholder="State"
-                />
-                <input
-                  className="p-3 text-[#6b6b6b] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
-                  type="text"
-                  placeholder="ZIP"
-                />
-                <input
-                  className="p-3 text-[#6b6b6b] bg-[#dddddd] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
-                  type="text"
-                  value={userData.phone}
                   disabled
+                />
+                <input
+                  className="p-3 text-[#6b6b6b] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
+                  type="text"
+                  name="country"
+                  placeholder="Country / Region"
+                  value={userData.country}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  className="p-3 text-[#6b6b6b] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
+                  type="text"
+                  name="address"
+                  placeholder="Street Address"
+                  value={userData.address}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  className="p-3 text-[#6b6b6b] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
+                  type="text"
+                  name="city"
+                  placeholder="Town / City"
+                  value={userData.city}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  className="p-3 text-[#6b6b6b] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
+                  type="text"
+                  name="state"
+                  placeholder="State"
+                  value={userData.state}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  className="p-3 text-[#6b6b6b] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
+                  type="number"
+                  name="zip_code"
+                  placeholder="ZIP"
+                  value={userData.zip_code}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  className="p-3 text-[#6b6b6b] border-solid border-[1px] border-[#9a9a9a] rounded-md focus:border-yellow focus:outline-none"
+                  type="number"
+                  name="phone"
+                  value={userData.phone}
+                  onChange={handleChange}
+                  required
                 />
               </div>
               <div className="mt-5">

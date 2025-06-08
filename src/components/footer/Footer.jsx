@@ -138,7 +138,7 @@ const Footer = () => {
                 type="submit"
                 className="p-[10px_20px] rounded-md bg-yellow text-[15px] absolute top-[6.2px] right-[2%] sm:right-[13%] lg:right-[13%]"
               >
-                SINGUP
+                SIGNUP
               </button>
             </form>
           </div>

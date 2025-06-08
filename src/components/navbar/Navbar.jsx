@@ -9,14 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 import SlideBar from "../slidebar/SlideBar";
 import { loadItem } from "../../store/cartSlice";
 import Image from "next/image";
-import axios from "axios";
 
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
   const [toggle, setToggle] = useState(false);
-  const [checkToken, setCheckToken] = useState(false);
   const [slidebar, setSlidebar] = useState(false);
-  const [localtoken, setLocaltoken] = useState(null);
   const token = useSelector((state) => state.user.token);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartlist.cart); // **เรียกใช้ทำให้ rerender component **
@@ -24,14 +21,7 @@ const Navbar = () => {
   const navMenuRef = useRef();
   const miniMenuRef = useRef();
   const arrowRef = useRef();
-  const URL = process.env.NEXT_PUBLIC_API_URL;
-
-  const getData = async () => {
-    await axios
-      .get(`${URL}/api/getuser`)
-      .then((res) => console.log(res.data.message))
-      .catch((err) => console.log(err.data.message));
-  };
+  const [hasMounted, setHasMounted] = useState(false);
 
   const handleToggle = () => {
     if (toggle) {
@@ -45,35 +35,26 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    const localtokens = localStorage.getItem("token");
-    setLocaltoken(localtokens ? localtokens : null);
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
+    const handleScroll = () => {
       if (window.scrollY > 50) {
-        navRef.current.classList.add("!bg-blackBlue");
-      }
-      if (window.scrollY < 50) {
-        navRef.current.classList.remove("!bg-blackBlue");
+        navRef.current?.classList.add("!bg-blackBlue");
+      } else {
+        navRef.current?.classList.remove("!bg-blackBlue");
         setSlidebar(false);
       }
-    });
-  }, []);
+    };
 
-  useEffect(() => {
-    getData();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    if (token) {
-      return setCheckToken(true);
-    }
-    setCheckToken(false);
-  }, [token]);
 
   useEffect(() => {
     dispatch(loadItem());
+  }, []);
+
+  // ป้องกันการ render ด้วย client-only check
+  useEffect(() => {
+    setHasMounted(true);
   }, []);
 
   return (
@@ -83,7 +64,7 @@ const Navbar = () => {
         className="py-[5px] w-screen bg-[#0f172b] lg:bg-transparent fixed z-20 transition ease-linear duration-200"
       >
         <div className="flex items-center justify-between container-section">
-          <Link href={"/"} className="logo flex items-center gap-2">
+          <Link href={"/food"} className="logo flex items-center gap-2">
             <Image className="w-[55px] lg:w-[60px] ani" src={logo_nav} alt="" />
             <h1 className="text-[15px] sm:text-[18px] lg:text-[23px] text-white font-semibold">
               RESTAURANT
@@ -92,25 +73,25 @@ const Navbar = () => {
           <div className="nav-menu flex text-[15px] text-white gap-[10px]">
             <ul className="hidden lg:flex items-center justify-center">
               <Link
-                href={"/"}
+                href={"/food"}
                 className="p-[15px] hover:text-yellow transition duration-300"
               >
                 HOME
               </Link>
               <Link
-                href={"/about"}
+                href={"/food/about"}
                 className="p-[15px] hover:text-yellow transition duration-300"
               >
                 ABOUT
               </Link>
               <Link
-                href={"/service"}
+                href={"/food/service"}
                 className="p-[15px] hover:text-yellow transition duration-300"
               >
                 SERVICE
               </Link>
               <Link
-                href={"/menu"}
+                href={"/food/menu"}
                 className="p-[15px] hover:text-yellow transition duration-300"
               >
                 MENU
@@ -143,19 +124,19 @@ const Navbar = () => {
                   </div>
                   <div class="invisible opacity-0 absolute z-50 text-[15px] flex w-[9rem] top-[3.9rem] flex-col bg-gray-100 py-1 px-4 transition-all duration-300 text-gray-800 rounded-md shadow-xl group-hover:visible group-hover:opacity-100">
                     <Link
-                      href={"/ourteam"}
+                      href={"/food/ourteam"}
                       class="my-2 block border-b border-gray-100 py-1 text-gray-500 hover:text-black md:mx-2 "
                     >
                       Our Team
                     </Link>
                     <Link
-                      href={"/testimonial"}
+                      href={"/food/testimonial"}
                       class="my-2 block border-b border-gray-100 py-1 text-gray-500 hover:text-black md:mx-2"
                     >
                       Testimonial
                     </Link>
                     <Link
-                      href={"/booking"}
+                      href={"/food/booking"}
                       class="my-2 block border-b border-gray-100 py-1 text-gray-500 hover:text-black md:mx-2"
                     >
                       Booking
@@ -164,7 +145,7 @@ const Navbar = () => {
                 </div>
               </div>
               <Link
-                href={"/contact"}
+                href={"/food/contact"}
                 className="p-[15px] hover:text-yellow transition duration-300"
               >
                 CONTACT
@@ -189,7 +170,7 @@ const Navbar = () => {
             >
               <ul className="flex flex-col p-[42px] text-[13px] sm:text-[14px] lg:text-[16px]">
                 <Link
-                  href={"/"}
+                  href={"/food/"}
                   onClick={() => {
                     setOpen(false);
                     navMenuRef.current.classList.remove("max-h-[550px]");
@@ -199,7 +180,7 @@ const Navbar = () => {
                   HOME
                 </Link>
                 <Link
-                  href={"/about"}
+                  href={"/food/about"}
                   onClick={() => {
                     setOpen(false);
                     navMenuRef.current.classList.remove("max-h-[550px]");
@@ -209,7 +190,7 @@ const Navbar = () => {
                   ABOUT
                 </Link>
                 <Link
-                  href={"/service"}
+                  href={"/food/service"}
                   onClick={() => {
                     setOpen(false);
                     navMenuRef.current.classList.remove("max-h-[550px]");
@@ -219,7 +200,7 @@ const Navbar = () => {
                   SERVICE
                 </Link>
                 <Link
-                  href={"/menu"}
+                  href={"/food/menu"}
                   onClick={() => {
                     setOpen(false);
                     navMenuRef.current.classList.remove("max-h-[550px]");
@@ -246,7 +227,7 @@ const Navbar = () => {
                       style={{ transition: "linear max-height 0.2s" }}
                     >
                       <Link
-                        href={"/ourteam"}
+                        href={"/food/ourteam"}
                         onClick={() => {
                           setOpen(false);
                           navMenuRef.current.classList.remove("max-h-[550px]");
@@ -256,7 +237,7 @@ const Navbar = () => {
                         OurTeam
                       </Link>
                       <Link
-                        href={"/testimonial"}
+                        href={"/food/testimonial"}
                         onClick={() => {
                           setOpen(false);
                           navMenuRef.current.classList.remove("max-h-[550px]");
@@ -266,7 +247,7 @@ const Navbar = () => {
                         Testimonial
                       </Link>
                       <Link
-                        href={"/booking"}
+                        href={"/food/booking"}
                         onClick={() => {
                           setOpen(false);
                           navMenuRef.current.classList.remove("max-h-[550px]");
@@ -279,7 +260,7 @@ const Navbar = () => {
                   </span>
                 </li>
                 <Link
-                  href={"/contact"}
+                  href={"/food/contact"}
                   onClick={() => {
                     setOpen(false);
                     navMenuRef.current.classList.remove("max-h-[550px]");
@@ -290,7 +271,7 @@ const Navbar = () => {
                 </Link>
               </ul>
             </div>
-            {checkToken || localtoken ? (
+            {hasMounted && localStorage?.getItem("token") ? (
               <div className="flex gap-[15px] items-center">
                 <a
                   onClick={() => {
@@ -310,7 +291,7 @@ const Navbar = () => {
                   <i class="bx bxs-heart wishlistIcon text-[20px]"></i>
                 </a>
                 <Link
-                  href={"/account"}
+                  href={"/food/account"}
                   className="p-[7px] lg:p-[9px] bg-yellow border-soLinkd border-[1px] flex items-center justify-center border-yellow rounded-md hover:bg-yellowHover transition duration-300"
                 >
                   <i class="bx bxs-user text-[20px]"></i>
@@ -319,13 +300,13 @@ const Navbar = () => {
             ) : (
               <div className="flex gap-[15px] items-center">
                 <Link
-                  href={"/singup"}
+                  href={"/food/signup"}
                   className="text-[14px] sm:text-[16px] p-[5px_6px] sm:p-[7px] lg:p-[10px] bg-yellow border-soLinkd border-[1px] border-yellow rounded-md hover:bg-yellowHover transition duration-300"
                 >
-                  Singup
+                  Signup
                 </Link>
                 <Link
-                  href={"/login"}
+                  href={"/food/login"}
                   className="text-[14px] sm:text-[16px] p-[5px_11px] sm:p-[7px_13px] lg:p-[10px_15px] border-soLinkd border-[1px] border-yellow rounded-md hover:bg-yellowHover transition duration-300"
                 >
                   Login

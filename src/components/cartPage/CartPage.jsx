@@ -164,7 +164,7 @@ const CartPage = () => {
                   <p>$ {(total * 0.07 + total).toFixed(2)}</p>
                 </div>
               </div>
-              <Link href={"/chechout"}>
+              <Link href={"/food/chechout"}>
                 <button className="bg-yellow p-[0.7rem] w-full text-[17px] lg:text-[18px] rounded-md hover:bg-yellowHover">
                   Proceed to Checkout
                 </button>

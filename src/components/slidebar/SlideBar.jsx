@@ -54,7 +54,7 @@ const SlideBar = ({ toggle, setToggle }) => {
               <p>${total.toFixed(2)}</p>
             </div>
             <div className="flex justify-between items-center gap-4 text-white">
-              <Link href={"/cart"} className="flex-1">
+              <Link href={"/food/cart"} className="flex-1">
                 <button
                   onClick={() => {
                     setToggle(false);
@@ -64,7 +64,7 @@ const SlideBar = ({ toggle, setToggle }) => {
                   Cart
                 </button>
               </Link>
-              <Link href={"/chechout"} className="flex-1">
+              <Link href={"/food/chechout"} className="flex-1">
                 <button
                   onClick={() => {
                     setToggle(false);

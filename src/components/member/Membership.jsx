@@ -11,7 +11,7 @@ const Membership = () => {
             discounts.
           </h1>
           <Link
-            href={"/membership"}
+            href={"/food/membership"}
             className="p-[13px_25px] rounded-md lg:p-[15px_30px] bg-yellow text-white text-[15px] lg:text-[16px] hover:bg-yellowHover"
           >
             go to member

@@ -1,38 +1,65 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import show_image from "../assets/image/aboutImg1_4.webp";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { createUser } from "../../store/UserSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { createUser } from "../../store/userThunk";
 import { toast } from "react-toastify";
+import Link from "next/link";
+import show_image from "../assets/image/aboutImg1_4.webp";
 import Image from "next/image";
 
 const SingupPage = () => {
   const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.user);
   const { register, handleSubmit, reset } = useForm();
+  const [hasMounted, setHasMounted] = useState(false);
   const router = useRouter();
 
-  const onSubmit = (data) => {
-    dispatch(createUser(data)).then((res) => {
-      if (res.payload.error) {
-        return toast.error("Duplicate email address.", {
-          position: "bottom-left",
-          autoClose: 2000,
-          theme: "colored",
-          pauseOnHover: false,
-        });
-      }
-      router.push("/login");
-      reset();
-      toast.success("Account has been created.", {
+  const onSubmit = async (data) => {
+    // แสดง loading ก่อน
+    const toasId = toast.loading("Please wait...", { position: "bottom-left" });
+
+    const result = await dispatch(createUser(data));
+
+    // ปิด loading ก่อนแสดง success/error
+    toast.dismiss(toasId);
+
+    if (createUser.fulfilled.match(result)) {
+      toast.success("Account has been created 🎉", {
         position: "bottom-left",
         autoClose: 2000,
         pauseOnHover: false,
       });
-    });
+      router.push("/food/login");
+    } else {
+      const errorMessage = // * ใช้ result ที่ได้จาก dispatch โดยตรง ไม่ต้องไปดึง error จาก store
+        result.payload?.message ||
+        result.error?.message ||
+        "Something went wrong";
+      toast.error(`${errorMessage} ❌`, {
+        position: "bottom-left",
+        autoClose: 2000,
+        theme: "colored",
+        pauseOnHover: false,
+      });
+      reset();
+    }
   };
+
+  useEffect(() => {
+    setHasMounted(true); // now we're on the client
+  }, []);
+
+  useEffect(() => {
+    if (token) {
+      return router.replace("/food/account");
+    }
+  }, [token]);
+
+  if (!hasMounted) return null; // ⚠️ Wait until client mounted
 
   return (
     <section>
@@ -56,7 +83,7 @@ const SingupPage = () => {
                 Register
               </p>
               <h1 className="text-[30px] sm:text-[35px] lg:text-[40px] font-semibold">
-                Sing Up
+                Sign Up
               </h1>
             </div>
             <form
@@ -93,7 +120,7 @@ const SingupPage = () => {
                 />
                 <input
                   className="p-2 w-full focus:border-yellow border-[1px] border-solid focus:outline-none rounded-md"
-                  type="text"
+                  type="number"
                   {...register("phone")}
                   name="phone"
                   placeholder="Phone(0000000000)..."
@@ -123,7 +150,10 @@ const SingupPage = () => {
               </button>
               <p className="text-white">
                 Create an account?{" "}
-                <Link href={"/login"} className="text-yellow cursor-pointer">
+                <Link
+                  href={"/food/login"}
+                  className="text-yellow cursor-pointer"
+                >
                   Click here
                 </Link>
               </p>

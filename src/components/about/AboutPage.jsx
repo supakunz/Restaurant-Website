@@ -143,7 +143,7 @@ const AboutPage = () => {
             </div>
             <div>
               <Link
-                href={"/about"}
+                href={"/food/about"}
                 className="p-[14px_28px] rounded-md lg:p-[15px_30px] text-[14px] lg:text-[16px] bg-yellow text-white hover:bg-yellowHover"
               >
                 Read More

@@ -85,7 +85,7 @@ const Popular = () => {
             </Swiper>
             <div className="flex justify-center my-5">
               <Link
-                href={"/menu"}
+                href={"/food/menu"}
                 className="p-[13px_26px] lg:p-[15px_30px] text-[15px] lg:text-[16px] rounded-md bg-yellow text-white  hover:bg-yellowHover"
               >
                 View More

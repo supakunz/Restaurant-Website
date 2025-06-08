@@ -1,124 +1,86 @@
-import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
-import axios from "axios";
-import { toast } from 'react-toastify';
+import { createSlice } from "@reduxjs/toolkit";
+import { createUser, checkUser, getUser } from "./userThunk";
 
-const URL = process.env.NEXT_PUBLIC_API_URL
+// 👇 State เริ่มต้น
+const initialState = {
+  user: null, // ข้อมูลผู้ใช้ (หลัง login แล้ว)
+  token: typeof window !== "undefined" ? localStorage.getItem("token") : null, // token ที่เก็บไว้
+  loading: false, // สถานะการโหลด (ใช้โชว์ spinner ได้)
+  error: null, // เก็บข้อความ error
+  manualLogout: false,
+};
 
-// Create user
-export const createUser = createAsyncThunk(
-  'user/createUser',
-  async (userdata) => {
-    const req = await axios.post(`${URL}/api/register`, userdata)
-    const response = await req.data
-    return response;
-  }
-)
-
-//Login user
-export const checkUser = createAsyncThunk(
-  'user/checkUser',
-  async (userdata) => {
-    const req = await axios.post(`${URL}/api/login`, userdata) // checkdata login ต้องส่ง data 
-    const response = req.data
-    // const token = response.token
-    // localStorage.setItem('token', token)
-    return response
-  }
-)
-
-//Get DataUser
-export const getUser = createAsyncThunk(
-  'user/getUser',
-  async (token) => {
-    const req = await axios.get(`${URL}/api/users`, { headers: { "Authorization": `Bearer ${token}` } })
-    const response = req.data
-    return response
-  }
-)
-
-const UserSlice = createSlice({
+// 🎯 ตัวหลัก: สร้าง Slice สำหรับจัดการ user state
+const userSlice = createSlice({
   name: "user",
-  initialState: {
-    loading: false,
-    user: null,
-    token: null,
-    error: null,
-  },
+  initialState,
   reducers: {
+    // 📌 Log out ผู้ใช้
     logOut: (state) => {
-      state.token = null
-      localStorage.removeItem('token')
-      localStorage.removeItem('cart')
-    }
+      state.manualLogout = true;
+      state.token = null;
+      state.user = null;
+      localStorage.removeItem("token"); // ล้าง token
+      localStorage.removeItem("cart"); // ล้างตะกร้า (ถ้ามี)
+    },
+    // 📌 Reset ค่า manualLogout
+    resetManualLogout: (state) => {
+      state.manualLogout = false;
+    },
+
+    // ✅ Socail Login
+    setUser: (state, action) => {
+      state.token = action.payload.accessToken; // บันทึก token
+      localStorage.setItem("token", action.payload.accessToken); // เก็บ token ไว้ใช้ทีหลัง
+      state.loading = false;
+    },
+
+    setLoading: (state) => {
+      state.loading = true;
+    },
   },
   extraReducers: (builder) => {
-    builder
+    builder // (* addCase ต้องมาก่อน addMatcher)
+      // ✅ Register สำเร็จ
+      .addCase(createUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload; // บันทึกข้อมูลผู้ใช้ที่เพิ่งสมัคร
+      })
+
+      // ✅ Login สำเร็จ
+      .addCase(checkUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.token = action.payload.token; // บันทึก token
+        localStorage.setItem("token", action.payload.token); // เก็บ token ไว้ใช้ทีหลัง
+      })
+
+      // ✅ ดึงข้อมูลผู้ใช้สำเร็จ
+      .addCase(getUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload; // บันทึกข้อมูลผู้ใช้
+      })
+
+      // ⚙️ กำหนดเมื่อ asyncThunk เริ่มทำงาน
       .addMatcher(
-        (action) => action.type.endsWith("/pending"),
-        (state, action) => {
-          if (action.type.includes("checkUser") || action.type.includes("createUser")) {
-            toast.loading('Please wait...', { position: "bottom-left" })
-          }
-          state.loading = true;
-          state.error = null;
-        },
-      )
-      .addMatcher(
-        (action) => action.type.endsWith("/fulfilled"),
-        (state, action) => {
-          state.loading = false;
-          toast.dismiss();
-          if (action.type.includes("createUser")) {
-            state.user = action.payload
-            // console.log(current(state))
-          }
-          if (action.type.includes("checkUser")) {
-            toast.success('Login successful', {
-              position: "bottom-left",
-              autoClose: 2000,
-              pauseOnHover: false,
-            })
-            state.token = action.payload.token
-            localStorage.setItem('token', state.token)
-          }
-          if (action.type.includes("getUser")) {
-            if (state.token == null) {
-              state.token = localStorage.getItem('token')
-            }
-            state.user = action.payload
-          }
+        (a) => a.type.endsWith("/pending"),
+        (state) => {
+          state.loading = true; // แสดง loading
+          state.error = null; // เคลียร์ error เดิม
         }
       )
+
+      // ❌ ถ้าเกิด error จากทุก asyncThunk
       .addMatcher(
-        (action) => action.type.endsWith("/rejected"),
+        (a) => a.type.endsWith("/rejected"),
         (state, action) => {
           state.loading = false;
-          state.error = action.error.message
-          if (action.error.message === "Request failed with status code 401") {
-            toast.dismiss();
-            toast.error('Invalid email Please try again.', {
-              position: "bottom-left",
-              autoClose: 2000,
-              theme: "colored",
-              pauseOnHover: false,
-            })
-            state.error = 'Invalid email Please try again.'
-          }
-          if (action.error.message === "Request failed with status code 400") {
-            toast.dismiss();
-            toast.error('Invalid password Please try again.', {
-              position: "bottom-left",
-              autoClose: 2000,
-              theme: "colored",
-              pauseOnHover: false,
-            })
-            state.error = 'Invalid password Please try again.'
-          }
+          state.error = action.payload || "Something went wrong"; // บันทึกข้อความ error
         }
-      )
-  }
-})
+      );
+  },
+});
 
-export const { logOut } = UserSlice.actions;
-
-export default UserSlice.reducer;
+// 👉 Export action และ reducer
+export const { logOut, resetManualLogout, setUser, setLoading } =
+  userSlice.actions;
+export default userSlice.reducer;

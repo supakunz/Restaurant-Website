@@ -1,12 +1,11 @@
-import BeefBurger from "../../../public/menu/burger3.webp"
-import CheeseBeef from "../../../public/menu/burger6.webp"
-import BBQBeef from "../../../public/menu/burger9.webp"
-import Chocolate from "../../../public/menu/drink7.webp"
-import Crispy from "../../../public/menu/fried5.webp"
-import MeatLovers from "../../../public/menu/pizza6.webp"
-import BeefSteak from "../../../public/menu/steak2.webp"
-import RibeyeSteak from "../../../public/menu/steak5.webp"
-
+import BeefBurger from "../../public/menu/burger3.webp";
+import CheeseBeef from "../../public/menu/burger6.webp";
+import BBQBeef from "../../public/menu/burger9.webp";
+import Chocolate from "../../public/menu/drink7.webp";
+import Crispy from "../../public/menu/fried5.webp";
+import MeatLovers from "../../public/menu/pizza6.webp";
+import BeefSteak from "../../public/menu/steak2.webp";
+import RibeyeSteak from "../../public/menu/steak5.webp";
 
 let PopularMenu = [
   {
@@ -81,6 +80,6 @@ let PopularMenu = [
     price: "18.00",
     stars: "5",
   },
-]
+];
 
 export default PopularMenu;

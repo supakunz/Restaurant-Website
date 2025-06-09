@@ -3,24 +3,26 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./lib/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        'yellow': '#FEA116',
-        'yellowHover': '#ffb94f',
-        'blackBlue': '#0f172b',
-        'grayWhite': '#F4F4F4',
-        'grayLight': '#747373'
+        yellow: "#FEA116",
+        yellowHover: "#ffb94f",
+        blackBlue: "#0f172b",
+        grayWhite: "#F4F4F4",
+        grayLight: "#747373",
       },
       animation: {
-        'spin-slow': 'spin 40s linear infinite',
+        "spin-slow": "spin 40s linear infinite",
       },
       transitionProperty: {
-        'max-height': 'max-height 1s'
-      }
+        "max-height": "max-height 1s",
+      },
     },
   },
   plugins: [],
-}
+};

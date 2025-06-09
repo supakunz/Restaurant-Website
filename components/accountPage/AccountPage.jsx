@@ -34,40 +34,6 @@ const AccountPage = () => {
     route.replace("/food");
   };
 
-  // useEffect(() => {
-  //   if (!manualLogout) {
-  //     // เงื่อนไขตรวจสอบว่ากด logout เอง
-  //     if (!token) {
-  //       toast.error("Please login again ❌", {
-  //         position: "bottom-left",
-  //         autoClose: 2000,
-  //         theme: "colored",
-  //         pauseOnHover: false,
-  //       });
-  //       return route.replace("/food/login");
-  //     }
-
-  //     dispatch(getUser(token))
-  //       .unwrap() // ใช้ unwrap กับ thunk เพื่อจัดการ error โดยตรง
-  //       .then((res) => setUserData(res.data))
-  //       .catch(() => {
-  //         dispatch(logOut());
-  //         toast.error("Failed to fetch user data ❌", {
-  //           position: "bottom-left",
-  //           autoClose: 2000,
-  //           theme: "colored",
-  //           pauseOnHover: false,
-  //         });
-  //         route.replace("/food/login");
-  //       });
-  //   }
-
-  //   // reset manualLogout เพื่อให้ไม่ส่งผลต่อการ login/logout ครั้งถัดไป
-  //   if (manualLogout) {
-  //     dispatch(resetManualLogout());
-  //   }
-  // }, [token]);
-
   useEffect(() => {
     if (manualLogout) {
       dispatch(resetManualLogout()); // ✅ เคลียร์ state กลับ

@@ -15,7 +15,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import {
   GoogleLoginButton,
-  FacebookLoginButton,
+  GithubLoginButton,
 } from "react-social-login-buttons";
 import { setLoading, setUser } from "@/store/UserSlice";
 
@@ -220,7 +220,13 @@ const LoginPage = () => {
                     signIn("google");
                   }}
                 />
-                <FacebookLoginButton style={{ borderRadius: "6px" }} />
+                <GithubLoginButton
+                  style={{ borderRadius: "6px" }}
+                  onClick={() => {
+                    dispatch(setLoading());
+                    signIn("github");
+                  }}
+                />
               </div>
 
               <p className="text-white">

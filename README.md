@@ -20,13 +20,12 @@ Restaurant Website is learn the basics of website functionality and internal dat
   <li>Role-based access control between users and admins.</li>
   <li>Browse categorized food menu with images and descriptions.</li>
   <li>Add, remove, increase, or decrease food items in cart.</li>
-  <li>View item count and subtotal in real-time.</li>
+  <li>View item count and subtotal in real-time using Redux Toolkit state management.</li>
   <li>Store and sync data with Supabase database.</li>
   <li>Optimize performance with Redis caching for frequently accessed data.</li>
   <li>Secure API routes with token-based authentication.</li>
   <li>Fully responsive layout built with TailwindCSS.</li>
 </ul>
-
 
 ## 🔥 Technologyies Used
   <i>Frontend :</i>

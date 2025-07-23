@@ -1,7 +1,7 @@
 # Restaurant
 Restaurant Website is learn the basics of website functionality and internal data communication using NextJS TailwindCSS Redux Toolkit for the client and NodeJS for the server, Use Supabase Database to get or store Data.
 
-<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/805b00d7-0434-4e92-b06d-212ea8e70977" />
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/952572b9-71d4-46a0-b820-6cfafc23823b" />
 
 ## 🌈 Live Demo 
 

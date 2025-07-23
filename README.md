@@ -14,15 +14,19 @@ Restaurant Website is learn the basics of website functionality and internal dat
 👉  [**Click here to open the app**](https://restauranntz.vercel.app)
 
 ## 🌏 Features
-  <ul>
-      <li>Show user information.</li>
-      <li>Authentication system.</li>
-      <li>Access control by API.</li>
-      <li>Use Supabase Database to get or store data.</li>
-      <li>Token for authentication before making a transaction.</li>
-      <li>Show quantity food menu in cart and sub total.</li>
-      <li>Can increase or decrease the number of food items.</li>
-  </ul>
+<ul>
+  <li>View and manage user profile with secure session handling.</li>
+  <li>Login via email/password or social accounts (e.g. Google).</li>
+  <li>Role-based access control between users and admins.</li>
+  <li>Browse categorized food menu with images and descriptions.</li>
+  <li>Add, remove, increase, or decrease food items in cart.</li>
+  <li>View item count and subtotal in real-time.</li>
+  <li>Store and sync data with Supabase database.</li>
+  <li>Optimize performance with Redis caching for frequently accessed data.</li>
+  <li>Secure API routes with token-based authentication.</li>
+  <li>Fully responsive layout built with TailwindCSS.</li>
+</ul>
+
 
 ## 🔥 Technologyies Used
   <i>Frontend :</i>

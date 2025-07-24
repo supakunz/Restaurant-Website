@@ -27,7 +27,7 @@ Restaurant Website is learn the basics of website functionality and internal dat
   <li>Fully responsive layout built with TailwindCSS.</li>
 </ul>
 
-## 🔥 Technologyies Used
+## 🔥 Tech Stack
   <i>Frontend :</i>
   <ul>
       <li>NextJS</li>
